@@ -1,0 +1,179 @@
+Hibernate: 
+    alter table employee_projects 
+       add column id integer not null auto_increment
+Hibernate: 
+    alter table employees_realistic 
+       add column id integer not null auto_increment
+Hibernate: 
+    select
+        ep1_0.project_id,
+        er1_0.salary 
+    from
+        employee_projects ep1_0 
+    join
+        employees_realistic er1_0 
+            on ep1_0.employee_id=er1_0.employee_id
+3.a Resultados de unir tablas:
+Project ID: 10, Salary: 63059,43
+Project ID: 8, Salary: 62315,72
+Project ID: 9, Salary: 139659,29
+Project ID: 11, Salary: 55178,73
+Project ID: 11, Salary: 62059,38
+Project ID: 18, Salary: 122598,84
+Project ID: 3, Salary: 133670,22
+Project ID: 5, Salary: 146812,86
+Project ID: 5, Salary: 71305,55
+Project ID: 8, Salary: 71724,47
+Project ID: 13, Salary: 129459,86
+Project ID: 5, Salary: 74778,64
+Project ID: 7, Salary: 74816,70
+Project ID: 3, Salary: 113484,05
+Project ID: 14, Salary: 110099,91
+Project ID: 14, Salary: 59119,92
+Project ID: 11, Salary: 126225,40
+Project ID: 18, Salary: 78359,31
+Project ID: 15, Salary: 139659,29
+Project ID: 14, Salary: 97770,02
+Project ID: 2, Salary: 101944,43
+Project ID: 7, Salary: 95469,56
+Project ID: 14, Salary: 86756,17
+Project ID: 13, Salary: 133670,22
+Project ID: 19, Salary: 135010,62
+Project ID: 1, Salary: 109367,95
+Project ID: 19, Salary: 89771,59
+Project ID: 13, Salary: 101944,43
+Project ID: 16, Salary: 141989,41
+Project ID: 1, Salary: 72894,69
+Project ID: 12, Salary: 86756,17
+Project ID: 10, Salary: 114157,61
+Project ID: 13, Salary: 138214,78
+Project ID: 14, Salary: 74778,64
+Project ID: 18, Salary: 71342,12
+Project ID: 18, Salary: 56841,16
+Project ID: 20, Salary: 123000,91
+Project ID: 8, Salary: 136034,03
+Project ID: 16, Salary: 59119,92
+Project ID: 8, Salary: 60320,15
+Project ID: 9, Salary: 57793,87
+Project ID: 14, Salary: 99471,49
+Project ID: 16, Salary: 129107,67
+Project ID: 1, Salary: 94506,69
+Project ID: 13, Salary: 57793,87
+Project ID: 11, Salary: 142943,29
+Project ID: 13, Salary: 74778,64
+Project ID: 6, Salary: 133670,22
+Project ID: 15, Salary: 66411,65
+Project ID: 5, Salary: 95651,81
+Project ID: 20, Salary: 74816,70
+Project ID: 18, Salary: 110099,91
+Project ID: 1, Salary: 97770,02
+Project ID: 13, Salary: 84357,42
+Project ID: 19, Salary: 111031,92
+Project ID: 19, Salary: 112617,95
+Project ID: 1, Salary: 95651,81
+Project ID: 3, Salary: 71342,12
+Project ID: 14, Salary: 136890,78
+Project ID: 5, Salary: 62315,72
+Hibernate: 
+    select
+        ep1_0.project_id,
+        sum((er1_0.salary/1900)) 
+    from
+        employee_projects ep1_0 
+    join
+        employees_realistic er1_0 
+            on ep1_0.employee_id=er1_0.employee_id 
+    group by
+        ep1_0.project_id
+3.b Resultados de costos salariales:
+Project ID: 1, Salary Costs: 247,47
+Project ID: 2, Salary Costs: 53,65
+Project ID: 3, Salary Costs: 167,63
+Project ID: 5, Salary Costs: 237,30
+Project ID: 6, Salary Costs: 70,35
+Project ID: 7, Salary Costs: 89,62
+Project ID: 8, Salary Costs: 173,89
+Project ID: 9, Salary Costs: 103,92
+Project ID: 10, Salary Costs: 93,27
+Project ID: 11, Salary Costs: 203,37
+Project ID: 12, Salary Costs: 45,66
+Project ID: 13, Salary Costs: 379,06
+Project ID: 14, Salary Costs: 349,94
+Project ID: 15, Salary Costs: 108,46
+Project ID: 16, Salary Costs: 173,80
+Project ID: 18, Salary Costs: 231,18
+Project ID: 19, Salary Costs: 236,02
+Project ID: 20, Salary Costs: 104,11
+Hibernate: 
+    select
+        p1_0.project_id,
+        p1_0.budget,
+        sum((er1_0.salary/1900)) 
+    from
+        projects p1_0 
+    join
+        employee_projects ep1_0 
+            on p1_0.project_id=ep1_0.project_id 
+    join
+        employees_realistic er1_0 
+            on ep1_0.employee_id=er1_0.employee_id 
+    group by
+        p1_0.project_id,
+        p1_0.budget
+3.c Resultados de costos con presupuesto:
+Project ID: 1, Budget: 25597,90, Salary Costs: 247,47
+Project ID: 2, Budget: 73139,01, Salary Costs: 53,65
+Project ID: 3, Budget: 46416,00, Salary Costs: 167,63
+Project ID: 5, Budget: 87841,22, Salary Costs: 237,30
+Project ID: 6, Budget: 77580,34, Salary Costs: 70,35
+Project ID: 7, Budget: 44025,78, Salary Costs: 89,62
+Project ID: 8, Budget: 44742,77, Salary Costs: 173,89
+Project ID: 9, Budget: 52671,43, Salary Costs: 103,92
+Project ID: 10, Budget: 52192,03, Salary Costs: 93,27
+Project ID: 11, Budget: 43652,42, Salary Costs: 203,37
+Project ID: 12, Budget: 30183,02, Salary Costs: 45,66
+Project ID: 13, Budget: 53635,71, Salary Costs: 379,06
+Project ID: 14, Budget: 95229,09, Salary Costs: 349,94
+Project ID: 15, Budget: 74185,44, Salary Costs: 108,46
+Project ID: 16, Budget: 92224,44, Salary Costs: 173,80
+Project ID: 18, Budget: 44075,99, Salary Costs: 231,18
+Project ID: 19, Budget: 63834,98, Salary Costs: 236,02
+Project ID: 20, Budget: 20032,48, Salary Costs: 104,11
+Hibernate: 
+    select
+        p1_0.project_id,
+        p1_0.budget,
+        sum((er1_0.salary/1900)),
+        ((sum((er1_0.salary/1900))/p1_0.budget)*100) 
+    from
+        projects p1_0 
+    join
+        employee_projects ep1_0 
+            on p1_0.project_id=ep1_0.project_id 
+    join
+        employees_realistic er1_0 
+            on ep1_0.employee_id=er1_0.employee_id 
+    group by
+        p1_0.project_id,
+        p1_0.budget
+3.d Resultados de fracción del presupuesto:
+Project ID: 1, Budget: 25597,90, Salary Costs: 247,47, Fraction: 0,97%
+Project ID: 2, Budget: 73139,01, Salary Costs: 53,65, Fraction: 0,07%
+Project ID: 3, Budget: 46416,00, Salary Costs: 167,63, Fraction: 0,36%
+Project ID: 5, Budget: 87841,22, Salary Costs: 237,30, Fraction: 0,27%
+Project ID: 6, Budget: 77580,34, Salary Costs: 70,35, Fraction: 0,09%
+Project ID: 7, Budget: 44025,78, Salary Costs: 89,62, Fraction: 0,20%
+Project ID: 8, Budget: 44742,77, Salary Costs: 173,89, Fraction: 0,39%
+Project ID: 9, Budget: 52671,43, Salary Costs: 103,92, Fraction: 0,20%
+Project ID: 10, Budget: 52192,03, Salary Costs: 93,27, Fraction: 0,18%
+Project ID: 11, Budget: 43652,42, Salary Costs: 203,37, Fraction: 0,47%
+Project ID: 12, Budget: 30183,02, Salary Costs: 45,66, Fraction: 0,15%
+Project ID: 13, Budget: 53635,71, Salary Costs: 379,06, Fraction: 0,71%
+Project ID: 14, Budget: 95229,09, Salary Costs: 349,94, Fraction: 0,37%
+Project ID: 15, Budget: 74185,44, Salary Costs: 108,46, Fraction: 0,15%
+Project ID: 16, Budget: 92224,44, Salary Costs: 173,80, Fraction: 0,19%
+Project ID: 18, Budget: 44075,99, Salary Costs: 231,18, Fraction: 0,52%
+Project ID: 19, Budget: 63834,98, Salary Costs: 236,02, Fraction: 0,37%
+Project ID: 20, Budget: 20032,48, Salary Costs: 104,11, Fraction: 0,52%
+
+Process finished with exit code 0

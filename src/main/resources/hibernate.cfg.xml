@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.hbm2ddl.auto">update</property> <!-- Cambié 'create' a 'update' para no eliminar los datos -->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> <!-- Dialecto de SQLite (usamos el de MySQL) -->
+    <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property> <!-- Driver de SQLite -->
+    <property name="hibernate.connection.url">jdbc:sqlite:company_database.db</property> <!-- Ruta a la base de datos SQLite -->
+    <property name="hibernate.connection.username"></property> <!-- SQLite no necesita usuario -->
+    <property name="hibernate.connection.password"></property> <!-- SQLite no necesita contraseña -->
+    <property name="hibernate.show_sql">true</property> <!-- Mostrar las consultas SQL generadas -->
+    <property name="hibernate.format_sql">true</property> <!-- Formatear las consultas SQL para mejor lectura -->
+    <mapping class="org.example.EmployeeProject"/>
+    <mapping class="org.example.EmployeeRealistic"/>
+    <mapping class="org.example.Project"/>
+  </session-factory>
+</hibernate-configuration>
