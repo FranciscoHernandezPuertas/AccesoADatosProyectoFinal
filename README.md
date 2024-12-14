@@ -1,3 +1,5 @@
+# Nota: este readme está hecho con un conversor pdf a markdown, es posible que su visualización contenga errores.
+
 # Página 1
 
 Funcionalidad: 
